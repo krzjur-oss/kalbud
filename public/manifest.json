@@ -1,14 +1,17 @@
 {
+  "id": "./",
   "name": "KALBUD - Kalkulator Budowlany",
   "short_name": "KALBUD",
-  "description": "Kalkulatory wycen budowlanych: opaski wokół domu, podjazdy, miejsca parkingowe, ogrodzenia, tarasy i zadaszenia.",
+  "description": "Profesjonalny kalkulator budowlany: wyceny opasek wokół domu, podjazdów, miejsc parkingowych, ogrodzeń, tarasów i zadaszeń.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
   "lang": "pl",
+  "categories": ["utilities", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icon-192.png",
