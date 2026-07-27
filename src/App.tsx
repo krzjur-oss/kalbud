@@ -38,6 +38,7 @@ import {
   ALL_PROJECT_MODULES,
 } from './utils/projectStorage';
 import { Header } from './components/Header';
+import { PWAInstallBanner } from './components/PWAInstallBanner';
 import { HouseBandCalculator } from './components/HouseBandCalculator';
 import { TerraceFoundationCalculator } from './components/TerraceFoundationCalculator';
 import { WoodenRoofCalculator } from './components/WoodenRoofCalculator';
@@ -274,6 +275,9 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
       
+      {/* PWA INSTALLATION & OFFLINE BANNER */}
+      <PWAInstallBanner />
+
       {/* HEADER & PROJECT MANAGER TOOLBAR */}
       <Header
         activeTab={activeTab}
