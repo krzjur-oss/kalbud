@@ -13,7 +13,7 @@ import {
   CustomPreset,
 } from '../types';
 import { ProjectManager } from './ProjectManager';
-import { Calculator, Shovel, Trees, ShoppingBag, Car, SquareParking, Shield } from 'lucide-react';
+import { Calculator, Shovel, Trees, ShoppingBag, Car, SquareParking, Shield, Info } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -36,6 +36,7 @@ interface HeaderProps {
   onDuplicateProject: (id: string) => void;
   onImportProjectJSON: (jsonString: string) => void;
   onSelectPresetTemplate: (preset: CustomPreset) => void;
+  onOpenAboutModal?: (tab?: 'info' | 'licencja' | 'regulamin') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -59,6 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
   onDuplicateProject,
   onImportProjectJSON,
   onSelectPresetTemplate,
+  onOpenAboutModal,
 }) => {
   return (
     <header className="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/90 shadow-xs">
@@ -190,6 +192,17 @@ export const Header: React.FC<HeaderProps> = ({
             <ShoppingBag className="w-4 h-4 text-emerald-400" />
             Kosztorys & Zakupy
           </button>
+
+          {onOpenAboutModal && (
+            <button
+              onClick={() => onOpenAboutModal('info')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all whitespace-nowrap cursor-pointer text-slate-600 hover:text-blue-600 hover:bg-blue-50 border border-slate-200/80 ml-auto"
+              title="Informacje o programie, licencja WLDE i regulamin"
+            >
+              <Info className="w-4 h-4 text-blue-600" />
+              <span>O programie & Licencja</span>
+            </button>
+          )}
         </nav>
       </div>
     </header>

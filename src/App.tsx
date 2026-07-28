@@ -46,9 +46,17 @@ import { DrivewayCalculator } from './components/DrivewayCalculator';
 import { ParkingCalculator } from './components/ParkingCalculator';
 import { FenceCalculator } from './components/FenceCalculator';
 import { SummaryShoppingList } from './components/SummaryShoppingList';
+import { AboutModal } from './components/AboutModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('opaska');
+  const [isAboutOpen, setIsAboutOpen] = useState<boolean>(false);
+  const [aboutTab, setAboutTab] = useState<'info' | 'licencja' | 'regulamin'>('info');
+
+  const handleOpenAbout = (tab: 'info' | 'licencja' | 'regulamin' = 'info') => {
+    setAboutTab(tab);
+    setIsAboutOpen(true);
+  };
 
   // PROJECTS STATE FROM LOCALSTORAGE
   const [projects, setProjects] = useState<SavedProject[]>(() => getSavedProjects());
@@ -300,6 +308,7 @@ export default function App() {
         onDuplicateProject={handleDuplicateProject}
         onImportProjectJSON={handleImportProjectJSON}
         onSelectPresetTemplate={handleSelectPresetTemplate}
+        onOpenAboutModal={handleOpenAbout}
       />
 
       {/* MAIN CONTAINER */}
@@ -388,11 +397,41 @@ export default function App() {
 
       {/* FOOTER */}
       <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500 print:hidden">
-        <p>
-          <strong>Kalbud</strong> — Kalkulator Budowlany (Opaska, Podjazd, Parking, Ogrodzenie, Taras, Zadaszenie) © {new Date().getFullYear()}
-        </p>
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p>
+            <strong>KALBUD</strong> — Kalkulator Budowlany v2.0 © {new Date().getFullYear()} mgr Krzysztof Jureczek. Wszelkie prawa zastrzeżone.
+          </p>
+          <div className="flex items-center gap-4 text-xs font-medium">
+            <button
+              onClick={() => handleOpenAbout('info')}
+              className="hover:text-blue-600 transition-colors cursor-pointer"
+            >
+              O programie
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => handleOpenAbout('licencja')}
+              className="hover:text-emerald-600 transition-colors cursor-pointer"
+            >
+              Licencja (WLDE)
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => handleOpenAbout('regulamin')}
+              className="hover:text-purple-600 transition-colors cursor-pointer"
+            >
+              Regulamin & RODO
+            </button>
+          </div>
+        </div>
       </footer>
 
+      {/* ABOUT / LICENSE / TERMS MODAL */}
+      <AboutModal
+        isOpen={isAboutOpen}
+        onClose={() => setIsAboutOpen(false)}
+        defaultTab={aboutTab}
+      />
     </div>
   );
 }
