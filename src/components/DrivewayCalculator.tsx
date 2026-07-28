@@ -1,6 +1,7 @@
 import React from 'react';
 import { DrivewayParams, DrivewayResults, DrivewaySurfaceType, DrivewayShape, SoilType } from '../types';
 import { Car, Layers, ArrowDownUp, CheckCircle, Info, ShieldCheck, Ruler } from 'lucide-react';
+import { parseLocaleFloat } from '../utils/parseUtils';
 
 interface DrivewayCalculatorProps {
   params: DrivewayParams;
@@ -75,7 +76,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                   step="any"
                   placeholder="np. 1200 (12m)"
                   value={!params.length ? '' : params.length}
-                  onChange={(e) => handleInputChange('length', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                  onChange={(e) => handleInputChange('length', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none"
                 />
               </div>
@@ -90,7 +91,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                   step="any"
                   placeholder="np. 350 (3.5m)"
                   value={!params.width ? '' : params.width}
-                  onChange={(e) => handleInputChange('width', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                  onChange={(e) => handleInputChange('width', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none"
                 />
               </div>
@@ -121,7 +122,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                     type="number"
                     placeholder="np. 250"
                     value={!params.extraWidthGarage ? '' : params.extraWidthGarage}
-                    onChange={(e) => handleInputChange('extraWidthGarage', parseFloat(e.target.value) || 0)}
+                    onChange={(e) => handleInputChange('extraWidthGarage', parseLocaleFloat(e.target.value))}
                     className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                   />
                 </div>
@@ -133,7 +134,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                     type="number"
                     placeholder="np. 400"
                     value={!params.extraLengthGarage ? '' : params.extraLengthGarage}
-                    onChange={(e) => handleInputChange('extraLengthGarage', parseFloat(e.target.value) || 0)}
+                    onChange={(e) => handleInputChange('extraLengthGarage', parseLocaleFloat(e.target.value))}
                     className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                   />
                 </div>
@@ -186,7 +187,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.customSurfaceThickness}
-                  onChange={(e) => handleInputChange('customSurfaceThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('customSurfaceThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -198,7 +199,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.beddingThickness}
-                  onChange={(e) => handleInputChange('beddingThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('beddingThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -210,7 +211,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.subBaseThickness}
-                  onChange={(e) => handleInputChange('subBaseThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('subBaseThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -235,7 +236,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                   <input
                     type="number"
                     value={params.filterSandThickness}
-                    onChange={(e) => handleInputChange('filterSandThickness', parseFloat(e.target.value) || 0)}
+                    onChange={(e) => handleInputChange('filterSandThickness', parseLocaleFloat(e.target.value))}
                     className="w-32 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                   />
                 </div>
@@ -305,7 +306,7 @@ export const DrivewayCalculator: React.FC<DrivewayCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.wasteBufferPercent}
-                  onChange={(e) => handleInputChange('wasteBufferPercent', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('wasteBufferPercent', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800"
                 />
               </div>

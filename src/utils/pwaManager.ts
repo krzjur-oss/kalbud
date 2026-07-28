@@ -20,7 +20,9 @@ export function usePWA() {
         navigator.serviceWorker
           .register(swUrl)
           .then((registration) => {
-            console.log('[KALBUD PWA] ServiceWorker registered with scope:', registration.scope);
+            if (import.meta.env.DEV) {
+              console.log('[KALBUD PWA] ServiceWorker registered with scope:', registration.scope);
+            }
             setSwRegistered(true);
           })
           .catch((error) => {
@@ -51,7 +53,9 @@ export function usePWA() {
       setIsInstalled(true);
       setIsInstallable(false);
       setDeferredPrompt(null);
-      console.log('[KALBUD PWA] App was successfully installed!');
+      if (import.meta.env.DEV) {
+        console.log('[KALBUD PWA] App was successfully installed!');
+      }
     };
 
     window.addEventListener('appinstalled', handleAppInstalled);

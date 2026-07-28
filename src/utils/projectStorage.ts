@@ -60,9 +60,14 @@ export function getSavedProjects(): SavedProject[] {
     if (Array.isArray(parsed) && parsed.length > 0) {
       return parsed.map((p) => ({
         ...p,
-        driveway: p.driveway || DEFAULT_DRIVEWAY_PARAMS,
-        parking: p.parking || DEFAULT_PARKING_PARAMS,
-        fence: p.fence || DEFAULT_FENCE_PARAMS,
+        houseBand: p.houseBand ? { ...DEFAULT_HOUSE_BAND_PARAMS, ...p.houseBand } : DEFAULT_HOUSE_BAND_PARAMS,
+        terraceFoundation: p.terraceFoundation
+          ? { ...DEFAULT_TERRACE_FOUNDATION_PARAMS, ...p.terraceFoundation }
+          : DEFAULT_TERRACE_FOUNDATION_PARAMS,
+        woodenRoof: p.woodenRoof ? { ...DEFAULT_WOODEN_ROOF_PARAMS, ...p.woodenRoof } : DEFAULT_WOODEN_ROOF_PARAMS,
+        driveway: p.driveway ? { ...DEFAULT_DRIVEWAY_PARAMS, ...p.driveway } : DEFAULT_DRIVEWAY_PARAMS,
+        parking: p.parking ? { ...DEFAULT_PARKING_PARAMS, ...p.parking } : DEFAULT_PARKING_PARAMS,
+        fence: p.fence ? { ...DEFAULT_FENCE_PARAMS, ...p.fence } : DEFAULT_FENCE_PARAMS,
         priceList: p.priceList ? { ...DEFAULT_PRICE_LIST, ...p.priceList } : DEFAULT_PRICE_LIST,
       }));
     }

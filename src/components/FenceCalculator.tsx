@@ -1,6 +1,7 @@
 import React from 'react';
 import { FenceParams, FenceResults, FenceType } from '../types';
 import { Shield, Layers, Ruler, CheckCircle, Info, ShieldCheck, DoorClosed } from 'lucide-react';
+import { parseLocaleFloat } from '../utils/parseUtils';
 
 interface FenceCalculatorProps {
   params: FenceParams;
@@ -93,7 +94,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                   step="any"
                   placeholder="np. 4000 (40m)"
                   value={!params.totalLength ? '' : params.totalLength}
-                  onChange={(e) => handleInputChange('totalLength', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                  onChange={(e) => handleInputChange('totalLength', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-purple-500 focus:bg-white"
                 />
               </div>
@@ -106,7 +107,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                   type="number"
                   placeholder="np. 153"
                   value={!params.fenceHeight ? '' : params.fenceHeight}
-                  onChange={(e) => handleInputChange('fenceHeight', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('fenceHeight', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-purple-500 focus:bg-white"
                 />
               </div>
@@ -121,7 +122,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                   type="number"
                   placeholder="250"
                   value={!params.spanLength ? '' : params.spanLength}
-                  onChange={(e) => handleInputChange('spanLength', parseFloat(e.target.value) || 250)}
+                  onChange={(e) => handleInputChange('spanLength', parseLocaleFloat(e.target.value) || 250)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800"
                 />
               </div>
@@ -166,7 +167,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                   </label>
                   <select
                     value={params.concreteBoardHeight}
-                    onChange={(e) => handleInputChange('concreteBoardHeight', parseFloat(e.target.value) || 25)}
+                    onChange={(e) => handleInputChange('concreteBoardHeight', parseLocaleFloat(e.target.value) || 25)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800"
                   >
                     <option value="20">20 cm</option>
@@ -186,7 +187,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                   type="number"
                   placeholder="80"
                   value={!params.postHoleDepth ? '' : params.postHoleDepth}
-                  onChange={(e) => handleInputChange('postHoleDepth', parseFloat(e.target.value) || 80)}
+                  onChange={(e) => handleInputChange('postHoleDepth', parseLocaleFloat(e.target.value) || 80)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -199,7 +200,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                   type="number"
                   placeholder="25"
                   value={!params.postHoleDiameter ? '' : params.postHoleDiameter}
-                  onChange={(e) => handleInputChange('postHoleDiameter', parseFloat(e.target.value) || 25)}
+                  onChange={(e) => handleInputChange('postHoleDiameter', parseLocaleFloat(e.target.value) || 25)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -233,7 +234,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.wicketWidth}
-                  onChange={(e) => handleInputChange('wicketWidth', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('wicketWidth', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -259,7 +260,7 @@ export const FenceCalculator: React.FC<FenceCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.gateWidth}
-                  onChange={(e) => handleInputChange('gateWidth', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('gateWidth', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>

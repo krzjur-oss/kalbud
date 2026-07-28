@@ -9,6 +9,7 @@ import { TerraceAndRoofVisualizer } from './TerraceAndRoofVisualizer';
 import { Rafters3DVisualizer } from './Rafters3DVisualizer';
 import { RaftersSchematic2D } from './RaftersSchematic2D';
 import { Trees, Wrench, Hammer, BookOpen, AlertTriangle, CheckCircle, Box, Layers, Ruler } from 'lucide-react';
+import { parseLocaleFloat } from '../utils/parseUtils';
 
 interface WoodenRoofCalculatorProps {
   params: WoodenRoofParams;
@@ -73,7 +74,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                 step="any"
                 placeholder="np. 450"
                 value={!params.width ? '' : params.width}
-                onChange={(e) => handleInputChange('width', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('width', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none"
               />
             </div>
@@ -85,7 +86,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                 step="any"
                 placeholder="np. 350"
                 value={!params.depth ? '' : params.depth}
-                onChange={(e) => handleInputChange('depth', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('depth', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none"
               />
             </div>
@@ -99,7 +100,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                 step="any"
                 placeholder="np. 270"
                 value={!params.heightAtWall ? '' : params.heightAtWall}
-                onChange={(e) => handleInputChange('heightAtWall', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('heightAtWall', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-sm text-slate-800"
               />
             </div>
@@ -110,7 +111,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                 step="any"
                 placeholder="np. 220"
                 value={!params.heightAtFront ? '' : params.heightAtFront}
-                onChange={(e) => handleInputChange('heightAtFront', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('heightAtFront', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-sm text-slate-800"
               />
             </div>
@@ -121,7 +122,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                 step="any"
                 placeholder="np. 30"
                 value={!params.frontOverhang ? '' : params.frontOverhang}
-                onChange={(e) => handleInputChange('frontOverhang', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('frontOverhang', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-sm text-slate-800"
               />
             </div>
@@ -182,7 +183,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="12"
                   value={!params.postDimension.width ? '' : params.postDimension.width}
-                  onChange={(e) => handleNestedInputChange('postDimension', 'width', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('postDimension', 'width', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>x</span>
@@ -190,7 +191,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="12"
                   value={!params.postDimension.height ? '' : params.postDimension.height}
-                  onChange={(e) => handleNestedInputChange('postDimension', 'height', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('postDimension', 'height', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>cm</span>
@@ -204,7 +205,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="12"
                   value={!params.frontBeamDimension.width ? '' : params.frontBeamDimension.width}
-                  onChange={(e) => handleNestedInputChange('frontBeamDimension', 'width', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('frontBeamDimension', 'width', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>x</span>
@@ -212,7 +213,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="16"
                   value={!params.frontBeamDimension.height ? '' : params.frontBeamDimension.height}
-                  onChange={(e) => handleNestedInputChange('frontBeamDimension', 'height', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('frontBeamDimension', 'height', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>cm</span>
@@ -226,7 +227,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="8"
                   value={!params.wallBeamDimension.width ? '' : params.wallBeamDimension.width}
-                  onChange={(e) => handleNestedInputChange('wallBeamDimension', 'width', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('wallBeamDimension', 'width', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>x</span>
@@ -234,7 +235,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="16"
                   value={!params.wallBeamDimension.height ? '' : params.wallBeamDimension.height}
-                  onChange={(e) => handleNestedInputChange('wallBeamDimension', 'height', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('wallBeamDimension', 'height', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>cm</span>
@@ -248,7 +249,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="7"
                   value={!params.rafterDimension.width ? '' : params.rafterDimension.width}
-                  onChange={(e) => handleNestedInputChange('rafterDimension', 'width', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('rafterDimension', 'width', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>x</span>
@@ -256,7 +257,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
                   type="number"
                   placeholder="16"
                   value={!params.rafterDimension.height ? '' : params.rafterDimension.height}
-                  onChange={(e) => handleNestedInputChange('rafterDimension', 'height', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleNestedInputChange('rafterDimension', 'height', parseLocaleFloat(e.target.value))}
                   className="w-14 bg-white border border-slate-200 rounded px-2 py-1 text-center text-slate-800"
                 />
                 <span>cm</span>
@@ -273,7 +274,7 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
               step="any"
               placeholder="np. 70"
               value={!params.targetRafterSpacing ? '' : params.targetRafterSpacing}
-              onChange={(e) => handleInputChange('targetRafterSpacing', parseFloat(e.target.value.replace(',', '.')) || 0)}
+              onChange={(e) => handleInputChange('targetRafterSpacing', parseLocaleFloat(e.target.value))}
               className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-800"
             />
           </div>

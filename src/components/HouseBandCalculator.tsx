@@ -2,6 +2,7 @@ import React from 'react';
 import { HouseBandParams, HouseBandResults, BandExclusion } from '../types';
 import { CrossSectionDiagram } from './CrossSectionDiagram';
 import { Info, Calculator, CheckCircle2, Plus, Trash2, Scissors } from 'lucide-react';
+import { parseLocaleFloat } from '../utils/parseUtils';
 
 interface HouseBandCalculatorProps {
   params: HouseBandParams;
@@ -95,7 +96,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 step="any"
                 placeholder="np. 4000"
                 value={params.housePerimeter === 0 || params.housePerimeter === undefined ? '' : params.housePerimeter}
-                onChange={(e) => handleInputChange('housePerimeter', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('housePerimeter', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-colors"
               />
               <span className="text-[10px] text-slate-400 mt-0.5 block">np. 4000 cm dla budynków 12x8 m</span>
@@ -111,7 +112,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 step="any"
                 placeholder="np. 80"
                 value={params.bandWidth === 0 || params.bandWidth === undefined ? '' : params.bandWidth}
-                onChange={(e) => handleInputChange('bandWidth', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                onChange={(e) => handleInputChange('bandWidth', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-colors"
               />
               <span className="text-[10px] text-slate-400 mt-0.5 block">standardowo 60 - 100 cm</span>
@@ -154,7 +155,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                       step="any"
                       placeholder="np. 450"
                       value={ex.length === 0 || ex.length === undefined ? '' : ex.length}
-                      onChange={(e) => handleUpdateExclusion(ex.id, 'length', parseFloat(e.target.value.replace(',', '.')) || 0)}
+                      onChange={(e) => handleUpdateExclusion(ex.id, 'length', parseLocaleFloat(e.target.value))}
                       className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs text-slate-800 text-right font-bold focus:bg-white focus:outline-none"
                     />
                     <span className="text-xs font-medium text-slate-500">cm</span>
@@ -226,7 +227,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 100"
                 value={params.edgingLength === 0 || params.edgingLength === undefined ? '' : params.edgingLength}
-                onChange={(e) => handleInputChange('edgingLength', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('edgingLength', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none"
               />
             </div>
@@ -236,7 +237,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 20"
                 value={params.edgingHeight === 0 || params.edgingHeight === undefined ? '' : params.edgingHeight}
-                onChange={(e) => handleInputChange('edgingHeight', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('edgingHeight', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none"
               />
             </div>
@@ -246,7 +247,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 6"
                 value={params.edgingThickness === 0 || params.edgingThickness === undefined ? '' : params.edgingThickness}
-                onChange={(e) => handleInputChange('edgingThickness', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('edgingThickness', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-sm text-slate-800 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none"
               />
             </div>
@@ -281,7 +282,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                   type="number"
                   placeholder="np. 50"
                   value={params.tileLength === 0 || params.tileLength === undefined ? '' : params.tileLength}
-                  onChange={(e) => handleInputChange('tileLength', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('tileLength', parseLocaleFloat(e.target.value))}
                   className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm text-slate-800"
                 />
               </div>
@@ -291,7 +292,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                   type="number"
                   placeholder="np. 50"
                   value={params.tileWidth === 0 || params.tileWidth === undefined ? '' : params.tileWidth}
-                  onChange={(e) => handleInputChange('tileWidth', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('tileWidth', parseLocaleFloat(e.target.value))}
                   className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm text-slate-800"
                 />
               </div>
@@ -301,7 +302,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                   type="number"
                   placeholder="np. 4"
                   value={params.tileThickness === 0 || params.tileThickness === undefined ? '' : params.tileThickness}
-                  onChange={(e) => handleInputChange('tileThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('tileThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm text-slate-800"
                 />
               </div>
@@ -315,7 +316,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 5"
                 value={params.gravelLayerThickness === 0 || params.gravelLayerThickness === undefined ? '' : params.gravelLayerThickness}
-                onChange={(e) => handleInputChange('gravelLayerThickness', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('gravelLayerThickness', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-3 py-1.5 text-sm text-slate-800"
               />
             </div>
@@ -336,7 +337,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 15"
                 value={params.subBaseThickness === 0 || params.subBaseThickness === undefined ? '' : params.subBaseThickness}
-                onChange={(e) => handleInputChange('subBaseThickness', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('subBaseThickness', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-sm text-slate-800"
               />
             </div>
@@ -346,7 +347,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 4"
                 value={params.beddingThickness === 0 || params.beddingThickness === undefined ? '' : params.beddingThickness}
-                onChange={(e) => handleInputChange('beddingThickness', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('beddingThickness', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-sm text-slate-800"
               />
             </div>
@@ -356,7 +357,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
                 type="number"
                 placeholder="np. 8"
                 value={params.wasteBufferPercent === 0 || params.wasteBufferPercent === undefined ? '' : params.wasteBufferPercent}
-                onChange={(e) => handleInputChange('wasteBufferPercent', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handleInputChange('wasteBufferPercent', parseLocaleFloat(e.target.value))}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-sm text-slate-800"
               />
             </div>

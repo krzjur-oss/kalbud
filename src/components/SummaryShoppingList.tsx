@@ -16,7 +16,7 @@ import {
 } from '../types';
 import { ShoppingBag, Printer, Edit2, Download, RefreshCw, Car, SquareParking, Shield, FileJson } from 'lucide-react';
 import { DEFAULT_PRICE_LIST } from '../data/defaults';
-import { generateCostEstimatePDF } from '../utils/pdfExport';
+import { parseLocaleFloat } from '../utils/parseUtils';
 
 interface SummaryShoppingListProps {
   projectName?: string;
@@ -147,7 +147,8 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
     window.print();
   };
 
-  const handleGeneratePdf = () => {
+  const handleGeneratePdf = async () => {
+    const { generateCostEstimatePDF } = await import('../utils/pdfExport');
     generateCostEstimatePDF({
       projectName,
       bandParams,
@@ -260,7 +261,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.edgingPricePerPiece ? '' : priceList.edgingPricePerPiece}
-                onChange={(e) => handlePriceChange('edgingPricePerPiece', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('edgingPricePerPiece', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -270,7 +271,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.roadCurbsPricePerPiece ? '' : priceList.roadCurbsPricePerPiece}
-                onChange={(e) => handlePriceChange('roadCurbsPricePerPiece', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('roadCurbsPricePerPiece', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -280,7 +281,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.paving8cmPricePerM2 ? '' : priceList.paving8cmPricePerM2}
-                onChange={(e) => handlePriceChange('paving8cmPricePerM2', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('paving8cmPricePerM2', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -290,7 +291,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.openworkPlatesPricePerM2 ? '' : priceList.openworkPlatesPricePerM2}
-                onChange={(e) => handlePriceChange('openworkPlatesPricePerM2', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('openworkPlatesPricePerM2', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -300,7 +301,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.fencePanelPricePerPiece ? '' : priceList.fencePanelPricePerPiece}
-                onChange={(e) => handlePriceChange('fencePanelPricePerPiece', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('fencePanelPricePerPiece', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -310,7 +311,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.fencePostPricePerPiece ? '' : priceList.fencePostPricePerPiece}
-                onChange={(e) => handlePriceChange('fencePostPricePerPiece', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('fencePostPricePerPiece', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -320,7 +321,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.concreteBoardPricePerPiece ? '' : priceList.concreteBoardPricePerPiece}
-                onChange={(e) => handlePriceChange('concreteBoardPricePerPiece', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('concreteBoardPricePerPiece', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -330,7 +331,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.subBasePricePerTon ? '' : priceList.subBasePricePerTon}
-                onChange={(e) => handlePriceChange('subBasePricePerTon', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('subBasePricePerTon', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -340,7 +341,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.woodPricePerM3 ? '' : priceList.woodPricePerM3}
-                onChange={(e) => handlePriceChange('woodPricePerM3', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('woodPricePerM3', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>
@@ -350,7 +351,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               <input
                 type="number"
                 value={!priceList.roofCoverPricePerM2 ? '' : priceList.roofCoverPricePerM2}
-                onChange={(e) => handlePriceChange('roofCoverPricePerM2', parseFloat(e.target.value) || 0)}
+                onChange={(e) => handlePriceChange('roofCoverPricePerM2', parseLocaleFloat(e.target.value))}
                 className="w-full bg-white border border-slate-200 rounded px-2.5 py-1.5 text-slate-800"
               />
             </div>

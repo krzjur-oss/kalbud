@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -10,6 +11,15 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
+// Rate limiter for AI Advisor endpoint (10 requests per 15 minutes per IP)
+const aiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Przekroczono limit zapytań do asystenta AI (max 10 zapytań na 15 minut). Spróbuj ponownie później." },
+});
 
 // Initialize Gemini client lazily
 function getGeminiClient() {
@@ -26,11 +36,15 @@ app.get("/api/health", (req, res) => {
 });
 
 // AI Advisor for construction questions
-app.post("/api/ai-advisor", async (req, res) => {
+app.post("/api/ai-advisor", aiLimiter, async (req, res) => {
   try {
     const { prompt, context } = req.body;
-    if (!prompt) {
+    if (typeof prompt !== "string" || prompt.trim().length === 0) {
       return res.status(400).json({ error: "Brak treści zapytania." });
+    }
+
+    if (prompt.length > 2000) {
+      return res.status(400).json({ error: "Treść zapytania przekracza maksymalną dopuszczalną długość (max 2000 znaków)." });
     }
 
     const ai = getGeminiClient();

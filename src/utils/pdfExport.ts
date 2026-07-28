@@ -187,8 +187,12 @@ export function generateCostEstimatePDF(data: {
     margin: { left: 14, right: 14 },
   });
 
-  // @ts-ignore
-  let finalY = doc.lastAutoTable.finalY + 8;
+  // Helper to safely get finalY from autoTable
+  const getFinalY = (jsDoc: jsPDF): number => {
+    return (jsDoc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable?.finalY || 60;
+  };
+
+  let finalY = getFinalY(doc) + 8;
 
   // TABLE 2: WYKOP I TŁUCZEŃ POD TARAS
   doc.setFontSize(10);
@@ -237,8 +241,7 @@ export function generateCostEstimatePDF(data: {
     margin: { left: 14, right: 14 },
   });
 
-  // @ts-ignore
-  finalY = doc.lastAutoTable.finalY + 8;
+  finalY = getFinalY(doc) + 8;
 
   // Check if we need a page break for section 3
   if (finalY > 230) {
@@ -294,8 +297,7 @@ export function generateCostEstimatePDF(data: {
   });
 
   // FOOTER NOTE
-  // @ts-ignore
-  finalY = doc.lastAutoTable.finalY + 10;
+  finalY = getFinalY(doc) + 10;
   if (finalY > 270) {
     doc.addPage();
     finalY = 20;

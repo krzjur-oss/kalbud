@@ -9,7 +9,9 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register('./sw.js')
       .then((reg) => {
-        console.log('[KALBUD PWA] Service Worker registered:', reg.scope);
+        if (import.meta.env.DEV) {
+          console.log('[KALBUD PWA] Service Worker registered:', reg.scope);
+        }
       })
       .catch((err) => {
         console.error('[KALBUD PWA] SW registration failed:', err);

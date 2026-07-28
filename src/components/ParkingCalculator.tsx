@@ -1,6 +1,7 @@
 import React from 'react';
 import { ParkingParams, ParkingResults, ParkingLayout, ParkingSurfaceType, SoilType } from '../types';
 import { SquareParking, Layers, Ruler, CheckCircle, Info, ShieldCheck, Car } from 'lucide-react';
+import { parseLocaleFloat } from '../utils/parseUtils';
 
 interface ParkingCalculatorProps {
   params: ParkingParams;
@@ -102,7 +103,7 @@ export const ParkingCalculator: React.FC<ParkingCalculatorProps> = ({
                   type="number"
                   placeholder="np. 500 (5m)"
                   value={!params.spaceLength ? '' : params.spaceLength}
-                  onChange={(e) => handleInputChange('spaceLength', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('spaceLength', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
               </div>
@@ -115,7 +116,7 @@ export const ParkingCalculator: React.FC<ParkingCalculatorProps> = ({
                   type="number"
                   placeholder="np. 280 (2.8m)"
                   value={!params.spaceWidth ? '' : params.spaceWidth}
-                  onChange={(e) => handleInputChange('spaceWidth', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('spaceWidth', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
               </div>
@@ -163,7 +164,7 @@ export const ParkingCalculator: React.FC<ParkingCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.customSurfaceThickness}
-                  onChange={(e) => handleInputChange('customSurfaceThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('customSurfaceThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -175,7 +176,7 @@ export const ParkingCalculator: React.FC<ParkingCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.beddingThickness}
-                  onChange={(e) => handleInputChange('beddingThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('beddingThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -187,7 +188,7 @@ export const ParkingCalculator: React.FC<ParkingCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.subBaseThickness}
-                  onChange={(e) => handleInputChange('subBaseThickness', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('subBaseThickness', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800"
                 />
               </div>
@@ -235,7 +236,7 @@ export const ParkingCalculator: React.FC<ParkingCalculatorProps> = ({
                 <input
                   type="number"
                   value={params.wasteBufferPercent}
-                  onChange={(e) => handleInputChange('wasteBufferPercent', parseFloat(e.target.value) || 0)}
+                  onChange={(e) => handleInputChange('wasteBufferPercent', parseLocaleFloat(e.target.value))}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800"
                 />
               </div>
