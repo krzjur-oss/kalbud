@@ -25,7 +25,7 @@ export const PWAInstallBanner: React.FC = () => {
               <Smartphone className="w-4 h-4" />
             </div>
             <div className="truncate">
-              <span className="font-bold text-blue-200">Aplikacja KALBUD dostępna do instalacji! </span>
+              <span className="font-bold text-blue-200">Aplikacja KALBUD | kalkulator budowlany dostępna do instalacji! </span>
               <span className="hidden sm:inline text-slate-300">Zainstaluj na pulpicie lub telefonie, aby korzystać offline bez otwierania przeglądarki.</span>
             </div>
           </div>
@@ -65,7 +65,7 @@ export const PWAInstallBanner: React.FC = () => {
                 setShowInfoModal(true);
               }
             }}
-            title="Zainstaluj KALBUD jako aplikację PWA (telefon/komputer)"
+            title="Zainstaluj KALBUD | kalkulator budowlany jako aplikację PWA (telefon/komputer)"
             className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold transition cursor-pointer shadow-2xs"
           >
             <Download className="w-3.5 h-3.5 text-blue-600" />
@@ -84,7 +84,7 @@ export const PWAInstallBanner: React.FC = () => {
                   <Smartphone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base text-slate-900">Instalacja PWA KALBUD</h3>
+                  <h3 className="font-bold text-base text-slate-900">Instalacja PWA KALBUD | kalkulator budowlany</h3>
                   <p className="text-xs text-slate-500">Praca 100% Offline na telefonie i komputerze</p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export const PWAInstallBanner: React.FC = () => {
               <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 flex items-start gap-2 text-blue-900">
                 <Sparkles className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                 <span>
-                  Aplikacja KALBUD została wyposażona w pełną technologię <strong>Progressive Web App (PWA)</strong>.
+                  Aplikacja KALBUD | kalkulator budowlany została wyposażona w pełną technologię <strong>Progressive Web App (PWA)</strong>.
                 </span>
               </div>
 

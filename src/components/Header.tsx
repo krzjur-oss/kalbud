@@ -76,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
               <h1 className="text-lg md:text-xl font-light tracking-tight text-slate-800 flex items-center gap-2">
                 <span className="font-extrabold text-blue-600 tracking-wider uppercase text-xl">KALBUD</span>
                 <span className="text-slate-400 font-normal">|</span>
-                <span className="font-medium text-slate-700 text-sm md:text-base">Kalkulator budowlany</span>
+                <span className="font-medium text-slate-700 text-sm md:text-base">kalkulator budowlany</span>
               </h1>
               <p className="text-[11px] text-slate-500">
                 Kompleksowy kalkulator opaski, podjazdu, parkingów, ogrodzeń, tarasu i zadaszenia

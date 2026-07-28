@@ -25,8 +25,8 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
               <Calculator className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold flex items-center gap-2">
-                <span>KALBUD</span>
+              <h2 className="text-lg font-bold flex items-center gap-2 flex-wrap">
+                <span>KALBUD | kalkulator budowlany</span>
                 <span className="text-blue-400 text-xs font-normal px-2 py-0.5 rounded-full bg-blue-950/80 border border-blue-800">
                   v2.0 (2026)
                 </span>
@@ -95,11 +95,11 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
                 <div>
                   <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-semibold mb-2">
                     <Calculator className="w-3.5 h-3.5" />
-                    Kalkulator Budowlany KALBUD
+                    KALBUD | kalkulator budowlany
                   </div>
                   <h3 className="text-xl font-bold text-white">Kompleksowy Asystent Kosztorysowania</h3>
                   <p className="text-xs text-slate-300 mt-1 max-w-xl">
-                    ProfScope & KALBUD umożliwia dokładne wyliczanie zapotrzebowania na materiały i kosztorysy dla opasek domowych, podjazdów, parkingów, ogrodzeń panelowych, wykopów tarasów oraz zadaszeń drewnianych.
+                    KALBUD | kalkulator budowlany umożliwia dokładne wyliczanie zapotrzebowania na materiały i kosztorysy dla opasek domowych, podjazdów, parkingów, ogrodzeń panelowych, wykopów tarasów oraz zadaszeń drewnianych.
                   </p>
                 </div>
                 <div className="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/80 text-xs text-slate-300 space-y-1 self-stretch md:self-auto min-w-[200px]">
@@ -114,7 +114,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
                   <h4 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    Możliwości programu KALBUD
+                    Możliwości programu KALBUD | kalkulator budowlany
                   </h4>
                   <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
                     <li>Kalkulacja opaski wokół domu (kostka, tłuczeń, obrzeża, wykopy).</li>
@@ -177,7 +177,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
                   Wolna Licencja Domowo-Edukacyjna (Zastrzeżona) — WLDE
                 </h3>
                 <p className="text-emerald-800 text-xs">
-                  Projekt: <strong>KALBUD - Kalkulator Budowlany (wersja 2.0 i wyższe)</strong>
+                  Projekt: <strong>KALBUD | kalkulator budowlany (wersja 2.0 i wyższe)</strong>
                   <br />
                   Właściciel praw autorskich i twórca: <strong>mgr Krzysztof Jureczek</strong> (Copyright © 2026)
                 </p>
@@ -186,12 +186,12 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
               <div className="space-y-3 bg-white border border-slate-200 rounded-xl p-5 font-sans leading-relaxed">
                 <h4 className="font-bold text-slate-900 uppercase tracking-wide text-xs">PREAMBUŁA</h4>
                 <p className="text-slate-600 text-xs">
-                  Niniejsza licencja ma na celu zabezpieczenie niekomercyjnego charakteru projektu „KALBUD - Kalkulator Budowlany”. Intencją Autora jest bezpłatne udostępnienie aplikacji do użytku domowego (prywatnego) oraz placówkom edukacyjnym, przy jednoczesnym pełnym zachowaniu praw autorskich, integralności kodu źródłowego oraz zakazie jakiejkolwiek komercjalizacji, kopiowania, modyfikacji i rozpowszechniania Oprogramowania bez pisemnej zgody Autora.
+                  Niniejsza licencja ma na celu zabezpieczenie niekomercyjnego charakteru projektu „KALBUD | kalkulator budowlany”. Intencją Autora jest bezpłatne udostępnienie aplikacji do użytku domowego (prywatnego) oraz placówkom edukacyjnym, przy jednoczesnym pełnym zachowaniu praw autorskich, integralności kodu źródłowego oraz zakazie jakiejkolwiek komercjalizacji, kopiowania, modyfikacji i rozpowszechniania Oprogramowania bez pisemnej zgody Autora.
                 </p>
 
                 <h4 className="font-bold text-slate-900 uppercase tracking-wide text-xs pt-2">§ 1. DEFINICJE</h4>
                 <ol className="list-decimal list-inside text-slate-600 text-xs space-y-1">
-                  <li><strong>Oprogramowanie</strong> – aplikacja „KALBUD - Kalkulator Budowlany” wraz z całym kodem źródłowym, plikami wykonywalnymi, grafiką, zasobami multimedialnymi oraz dokumentacją.</li>
+                  <li><strong>Oprogramowanie</strong> – aplikacja „KALBUD | kalkulator budowlany” wraz z całym kodem źródłowym, plikami wykonywalnymi, grafiką, zasobami multimedialnymi oraz dokumentacją.</li>
                   <li><strong>Autor / Licencjodawca</strong> – mgr Krzysztof Jureczek, jedyny twórca i wyłączny dysponent autorskich praw majątkowych i osobistych do Oprogramowania.</li>
                   <li><strong>Użytkownik / Licencjobiorca</strong> – każda osoba fizyczna korzystająca z Oprogramowania w celach domowych/prywatnych, a także każda szkoła, przedszkole, uczelnia lub inna placówka oświatowo-wychowawcza korzystająca z Oprogramowania w celach dydaktycznych.</li>
                 </ol>
@@ -250,7 +250,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
                   Regulamin i Polityka Prywatności
                 </h3>
                 <p className="text-purple-800 text-xs">
-                  Aplikacja: <strong>KALBUD - Kalkulator Budowlany</strong> (wersja 2.0 · obowiązuje od 2026 r.)
+                  Aplikacja: <strong>KALBUD | kalkulator budowlany</strong> (wersja 2.0 · obowiązuje od 2026 r.)
                   <br />
                   Właściciel i Autor: <strong>mgr Krzysztof Jureczek</strong>
                 </p>
@@ -259,7 +259,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
               <div className="space-y-3 bg-white border border-slate-200 rounded-xl p-5 font-sans leading-relaxed">
                 <h4 className="font-bold text-slate-900 uppercase tracking-wide text-xs">§ 1. POSTANOWIENIA OGÓLNE</h4>
                 <p className="text-slate-600 text-xs">
-                  1. Niniejszy Regulamin określa zasady korzystania z aplikacji „KALBUD - Kalkulator Budowlany”.<br />
+                  1. Niniejszy Regulamin określa zasady korzystania z aplikacji „KALBUD | kalkulator budowlany”.<br />
                   2. Właścicielem, twórcą i jedynym autorem Aplikacji jest mgr Krzysztof Jureczek.<br />
                   3. Aplikacja dystrybuowana jest na warunkach Wolnej Licencji Domowo-Edukacyjnej (Zastrzeżonej).<br />
                   4. Korzystanie z Aplikacji oznacza pełną akceptację niniejszego Regulaminu oraz Licencji.
@@ -313,7 +313,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose, default
         {/* MODAL FOOTER */}
         <div className="bg-slate-50 border-t border-slate-200 px-6 py-3.5 flex items-center justify-between">
           <div className="text-xs text-slate-500 hidden sm:block">
-            © 2026 Krzysztof Jureczek · KALBUD
+            © 2026 Krzysztof Jureczek · KALBUD | kalkulator budowlany
           </div>
           <button
             onClick={onClose}

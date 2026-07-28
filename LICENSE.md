@@ -1,7 +1,7 @@
 # LICENCJA UŻYTKOWANIA OPROGRAMOWANIA
 ## Wolna Licencja Domowo-Edukacyjna (Zastrzeżona) — WLDE
 
-### Projekt: KALBUD - Kalkulator Budowlany (wersja 2.0 i wyższe)
+### Projekt: KALBUD | kalkulator budowlany (wersja 2.0 i wyższe)
 
 **Właściciel praw autorskich i twórca:**
 **mgr Krzysztof Jureczek**
@@ -13,13 +13,13 @@ Kontakt: kjureczek@proton.me · GitHub: github.com/krzjur-oss
 
 ### PREAMBUŁA
 
-Niniejsza licencja ma na celu zabezpieczenie niekomercyjnego charakteru projektu **„KALBUD - Kalkulator Budowlany”**. Intencją Autora jest bezpłatne udostępnienie aplikacji do użytku domowego (prywatnego) oraz placówkom edukacyjnym, przy jednoczesnym pełnym zachowaniu praw autorskich, integralności kodu źródłowego oraz zakazie jakiejkolwiek komercjalizacji, kopiowania, modyfikacji i rozpowszechniania Oprogramowania bez pisemnej zgody Autora.
+Niniejsza licencja ma na celu zabezpieczenie niekomercyjnego charakteru projektu **„KALBUD | kalkulator budowlany”**. Intencją Autora jest bezpłatne udostępnienie aplikacji do użytku domowego (prywatnego) oraz placówkom edukacyjnym, przy jednoczesnym pełnym zachowaniu praw autorskich, integralności kodu źródłowego oraz zakazie jakiejkolwiek komercjalizacji, kopiowania, modyfikacji i rozpowszechniania Oprogramowania bez pisemnej zgody Autora.
 
 ---
 
 ### § 1. DEFINICJE
 
-1. **Oprogramowanie** – aplikacja „KALBUD - Kalkulator Budowlany” wraz z całym kodem źródłowym, plikami wykonywalnymi, grafiką, zasobami multimedialnymi oraz dokumentacją.
+1. **Oprogramowanie** – aplikacja „KALBUD | kalkulator budowlany” wraz z całym kodem źródłowym, plikami wykonywalnymi, grafiką, zasobami multimedialnymi oraz dokumentacją.
 2. **Autor / Licencjodawca** – mgr Krzysztof Jureczek, jedyny twórca i wyłączny dysponent autorskich praw majątkowych i osobistych do Oprogramowania.
 3. **Użytkownik / Licencjobiorca** – każda osoba fizyczna korzystająca z Oprogramowania w celach domowych/prywatnych, a także każda szkoła, przedszkole, uczelnia lub inna placówka oświatowo-wychowawcza korzystająca z Oprogramowania w celach dydaktycznych.
 

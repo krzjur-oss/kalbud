@@ -1,4 +1,4 @@
-# KALBUD — Kalkulator Budowlany & Asystent Kosztorysowania 🏗️
+# KALBUD | kalkulator budowlany 🏗️
 
 [![Wersja](https://img.shields.io/badge/Wersja-2.0.0-blue.svg)](https://github.com/krzjur-oss)
 [![Licencja](https://img.shields.io/badge/Licencja-WLDE-emerald.svg)](./LICENSE.md)

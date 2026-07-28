@@ -1,4 +1,4 @@
-# Regulamin i Polityka Prywatności aplikacji „KALBUD - Kalkulator Budowlany”
+# Regulamin i Polityka Prywatności aplikacji „KALBUD | kalkulator budowlany”
 
 **Wersja 2.0 · obowiązuje od 2026 r.**
 
@@ -6,7 +6,7 @@
 
 ## § 1. Postanowienia ogólne
 
-1. Niniejszy Regulamin określa zasady korzystania z aplikacji **„KALBUD - Kalkulator Budowlany”** (dalej: „Aplikacja”).
+1. Niniejszy Regulamin określa zasady korzystania z aplikacji **„KALBUD | kalkulator budowlany”** (dalej: „Aplikacja”).
 2. Właścicielem, twórcą i jedynym autorem Aplikacji jest **mgr Krzysztof Jureczek** (dalej: „Autor”).
 3. Aplikacja dystrybuowana jest na warunkach **Wolnej Licencji Domowo-Edukacyjnej (Zastrzeżonej)** — pełna treść w pliku `LICENSE.md`. Regulamin i Licencja stanowią całość i obowiązują łącznie.
 4. Korzystanie z Aplikacji oznacza pełną akceptację niniejszego Regulaminu oraz Licencji.

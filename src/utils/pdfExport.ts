@@ -87,9 +87,9 @@ export function generateCostEstimatePDF(data: {
   doc.rect(0, 0, 210, 32, 'F');
 
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(18);
+  doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text(cleanText('KALBUD - KOSZTORYS I LISTA ZAKUPÓW'), 14, 15);
+  doc.text(cleanText('KALBUD | kalkulator budowlany - KOSZTORYS I LISTA ZAKUPÓW'), 14, 15);
 
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
@@ -310,7 +310,7 @@ export function generateCostEstimatePDF(data: {
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100, 116, 139);
-  doc.text(cleanText('Kalbud - Kalkulator Budowlany. Wyliczenia maja charakter szacunkowy i pomagaja w doborze zakupu materialow.'), 18, finalY + 6);
+  doc.text(cleanText('KALBUD | kalkulator budowlany. Wyliczenia maja charakter szacunkowy i pomagaja w doborze zakupu materialow.'), 18, finalY + 6);
   doc.text(cleanText('Przed zamowieniem zalecana weryfikacja wymiarowa na placu budowy.'), 18, finalY + 10);
 
   // Save the PDF

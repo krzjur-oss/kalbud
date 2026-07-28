@@ -402,7 +402,7 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
               Kompleksowa Specyfikacja Materiałowa — {projectName}
             </h1>
             <p className="text-xs text-slate-500 print:text-gray-600 mt-1">
-              Data wygenerowania: {new Date().toLocaleDateString('pl-PL')} | Zestawienie materiałowe KALBUD
+              Data wygenerowania: {new Date().toLocaleDateString('pl-PL')} | Zestawienie materiałowe KALBUD | kalkulator budowlany
             </p>
           </div>
           <div className="text-right text-xs text-slate-500 print:text-black">

@@ -399,7 +399,7 @@ export default function App() {
       <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500 print:hidden">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
           <p>
-            <strong>KALBUD</strong> — Kalkulator Budowlany v2.0 © {new Date().getFullYear()} mgr Krzysztof Jureczek. Wszelkie prawa zastrzeżone.
+            <strong>KALBUD | kalkulator budowlany</strong> v2.0 © {new Date().getFullYear()} mgr Krzysztof Jureczek. Wszelkie prawa zastrzeżone.
           </p>
           <div className="flex items-center gap-4 text-xs font-medium">
             <button
