@@ -483,36 +483,60 @@ export const WoodenRoofCalculator: React.FC<WoodenRoofCalculatorProps> = ({
 
           {/* TAB CONTENT 2: TIMBER BILL OF MATERIALS */}
           {activeGuideTab === 'zestawienie' && (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
-                    <th className="py-2.5 px-3">Nazwa Elementu</th>
-                    <th className="py-2.5 px-3">Liczba sztuk</th>
-                    <th className="py-2.5 px-3">Przekrój (cm)</th>
-                    <th className="py-2.5 px-3">Długość handlowa (m)</th>
-                    <th className="py-2.5 px-3">Masa / Objętość (m³)</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700">
-                  {results.woodBillOfMaterials.map((item, idx) => (
-                    <tr key={idx}>
-                      <td className="py-2.5 px-3 font-semibold text-slate-900">{item.name}</td>
-                      <td className="py-2.5 px-3 font-bold text-blue-600">{item.count} szt.</td>
-                      <td className="py-2.5 px-3">{item.dimensionsCm} cm</td>
-                      <td className="py-2.5 px-3">{item.lengthM} m</td>
-                      <td className="py-2.5 px-3 text-slate-600">{item.volumeM3} m³</td>
+            <div className="space-y-3">
+              {/* MOBILE CARDS VIEW */}
+              <div className="grid grid-cols-1 gap-2 md:hidden">
+                {results.woodBillOfMaterials.map((item, idx) => (
+                  <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex justify-between items-center text-xs">
+                    <div>
+                      <div className="font-semibold text-slate-900">{item.name}</div>
+                      <div className="text-[11px] text-slate-500">Przekrój: {item.dimensionsCm} cm • Dł. handlowa: {item.lengthM} m</div>
+                      <div className="text-[11px] text-slate-500">Objętość: {item.volumeM3} m³</div>
+                    </div>
+                    <div className="text-right shrink-0 ml-2">
+                      <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px]">{item.count} szt.</span>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 flex justify-between items-center text-xs font-bold text-blue-900">
+                  <span>RAZEM DREWNO ({params.woodGrade})</span>
+                  <span className="text-sm text-blue-700">{results.totalWoodVolumeM3} m³</span>
+                </div>
+              </div>
+
+              {/* DESKTOP TABLE VIEW */}
+              <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200/60">
+                <table className="w-full text-left text-xs border-collapse min-w-[500px]">
+                  <thead>
+                    <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
+                      <th className="py-2.5 px-3">Nazwa Elementu</th>
+                      <th className="py-2.5 px-3">Liczba sztuk</th>
+                      <th className="py-2.5 px-3">Przekrój (cm)</th>
+                      <th className="py-2.5 px-3">Długość handlowa (m)</th>
+                      <th className="py-2.5 px-3">Masa / Objętość (m³)</th>
                     </tr>
-                  ))}
-                  <tr className="bg-slate-50 font-bold border-t border-slate-200 text-slate-900">
-                    <td className="py-2.5 px-3">RAZEM DREWNO ({params.woodGrade})</td>
-                    <td className="py-2.5 px-3">—</td>
-                    <td className="py-2.5 px-3">—</td>
-                    <td className="py-2.5 px-3">—</td>
-                    <td className="py-2.5 px-3 text-sm text-blue-600 font-bold">{results.totalWoodVolumeM3} m³</td>
-                  </tr>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-slate-700">
+                    {results.woodBillOfMaterials.map((item, idx) => (
+                      <tr key={idx}>
+                        <td className="py-2.5 px-3 font-semibold text-slate-900">{item.name}</td>
+                        <td className="py-2.5 px-3 font-bold text-blue-600">{item.count} szt.</td>
+                        <td className="py-2.5 px-3">{item.dimensionsCm} cm</td>
+                        <td className="py-2.5 px-3">{item.lengthM} m</td>
+                        <td className="py-2.5 px-3 text-slate-600">{item.volumeM3} m³</td>
+                      </tr>
+                    ))}
+                    <tr className="bg-slate-50 font-bold border-t border-slate-200 text-slate-900">
+                      <td className="py-2.5 px-3">RAZEM DREWNO ({params.woodGrade})</td>
+                      <td className="py-2.5 px-3">—</td>
+                      <td className="py-2.5 px-3">—</td>
+                      <td className="py-2.5 px-3">—</td>
+                      <td className="py-2.5 px-3 text-sm text-blue-600 font-bold">{results.totalWoodVolumeM3} m³</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
 

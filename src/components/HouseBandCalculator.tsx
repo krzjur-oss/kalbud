@@ -400,7 +400,7 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
 
         {/* DETAILED MATERIAL BREAKDOWN TABLE */}
         <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-2">
             <span className="flex items-center gap-2 text-slate-700">
               <CheckCircle2 className="w-4 h-4 text-blue-600" />
               Kompletne Zestawienie Materiałów na Opaskę Domu
@@ -408,8 +408,93 @@ export const HouseBandCalculator: React.FC<HouseBandCalculatorProps> = ({
             <span className="text-xs text-slate-500 font-normal normal-case">Głębokość wykopu: <strong>{results.totalExcavationDepth} cm</strong></span>
           </h3>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
+          {/* MOBILE CARDS VIEW */}
+          <div className="grid grid-cols-1 gap-2.5 md:hidden">
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <div className="flex justify-between items-start">
+                <span className="font-semibold text-slate-800">Obrzeża trawnikowe</span>
+                <span className="bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px]">{results.edgingPiecesCount} szt.</span>
+              </div>
+              <div className="text-slate-500 text-[11px]">{params.edgingLength}x{params.edgingHeight}x{params.edgingThickness} cm • {results.outerEdgingLength} mb</div>
+              <div className="text-slate-500 text-[11px]">Waga: ok. {(results.edgingPiecesCount * 28 / 1000).toFixed(2)} t</div>
+            </div>
+
+            {params.surfaceType === 'plyty' && (
+              <div className="bg-blue-50/40 border border-blue-100 rounded-xl p-3.5 space-y-1.5 text-xs">
+                <div className="flex justify-between items-start">
+                  <span className="font-semibold text-blue-900">Płyty tarasowe / betonowe</span>
+                  <span className="bg-blue-600 text-white font-bold px-2 py-0.5 rounded text-[11px]">{results.tilesCount} szt.</span>
+                </div>
+                <div className="text-slate-500 text-[11px]">{params.tileLength}x{params.tileWidth} cm • {results.bandAreaNet} m²</div>
+                <div className="text-slate-500 text-[11px]">Waga: {(results.tilesCount! * (params.tileLength * params.tileWidth * params.tileThickness * 0.0024)).toFixed(0)} kg</div>
+              </div>
+            )}
+
+            {params.surfaceType === 'kostka' && (
+              <div className="bg-blue-50/40 border border-blue-100 rounded-xl p-3.5 space-y-1.5 text-xs">
+                <div className="flex justify-between items-start">
+                  <span className="font-semibold text-blue-900">Kostka brukowa</span>
+                  <span className="bg-blue-600 text-white font-bold px-2 py-0.5 rounded text-[11px]">{results.pavingArea} m²</span>
+                </div>
+                <div className="text-slate-500 text-[11px]">Powierzchnia z zapasem • Netto: {results.bandAreaNet} m²</div>
+                <div className="text-slate-500 text-[11px]">Waga: ok. {(results.pavingArea! * 0.135).toFixed(1)} t</div>
+              </div>
+            )}
+
+            {params.surfaceType === 'zwir' && (
+              <div className="bg-blue-50/40 border border-blue-100 rounded-xl p-3.5 space-y-1.5 text-xs">
+                <div className="flex justify-between items-start">
+                  <span className="font-semibold text-blue-900">Żwir / Grys płukany</span>
+                  <span className="bg-blue-600 text-white font-bold px-2 py-0.5 rounded text-[11px]">{results.gravelWeightTons} t</span>
+                </div>
+                <div className="text-slate-500 text-[11px]">Grubość {params.gravelLayerThickness} cm • {results.gravelVolume} m³ sypkiego</div>
+              </div>
+            )}
+
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <div className="flex justify-between items-start">
+                <span className="font-semibold text-slate-800">Tłuczeń łamany 0-31.5 mm</span>
+                <span className="bg-slate-800 text-white font-bold px-2 py-0.5 rounded text-[11px]">{results.subBaseWeightTons} t</span>
+              </div>
+              <div className="text-slate-500 text-[11px]">Podbudowa opaski • Objętość: {results.subBaseVolume} m³</div>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <div className="flex justify-between items-start">
+                <span className="font-semibold text-slate-800">Podsypka piaskowo-cementowa</span>
+                <span className="bg-slate-200 text-slate-900 font-bold px-2 py-0.5 rounded text-[11px]">{results.beddingWeightTons} t piasku</span>
+              </div>
+              <div className="text-slate-500 text-[11px]">+ {results.cementBags25kg} worków cementu 25kg • Objętość {results.beddingVolume} m³</div>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <div className="flex justify-between items-start">
+                <span className="font-semibold text-slate-800">Beton B15 pod obrzeża</span>
+                <span className="bg-slate-200 text-slate-900 font-bold px-2 py-0.5 rounded text-[11px]">{results.concreteLeanForEdging} m³</span>
+              </div>
+              <div className="text-slate-500 text-[11px]">Ława i opór obrzeży • ok. {Math.ceil(results.concreteLeanForEdging * 40)} worków 25kg</div>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <div className="flex justify-between items-start">
+                <span className="font-semibold text-slate-800">Geowłóknina filtracyjna</span>
+                <span className="bg-slate-200 text-slate-900 font-bold px-2 py-0.5 rounded text-[11px]">{results.geotextileArea} m²</span>
+              </div>
+              <div className="text-slate-500 text-[11px]">Pod tłuczeń (z zakładem 15%)</div>
+            </div>
+
+            <div className="bg-amber-50/60 border border-amber-200/80 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <div className="flex justify-between items-start">
+                <span className="font-semibold text-amber-950">Urabisko z wykopu</span>
+                <span className="bg-amber-200 text-amber-900 font-bold px-2 py-0.5 rounded text-[11px]">{results.excavationVolumeLoose} m³</span>
+              </div>
+              <div className="text-amber-800 text-[11px]">Spęczniona ziemia do wywozu • ok. {(results.excavationVolumeLoose * 1.5).toFixed(1)} t</div>
+            </div>
+          </div>
+
+          {/* DESKTOP TABLE VIEW WITH HORIZONTAL SCROLL */}
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200/60">
+            <table className="w-full text-left text-xs border-collapse min-w-[540px]">
               <thead>
                 <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
                   <th className="py-2.5 px-3">Element / Materiał</th>

@@ -413,147 +413,316 @@ export const SummaryShoppingList: React.FC<SummaryShoppingListProps> = ({
         </div>
 
         {/* SECTION 1: OPASKA DOMU */}
-        <div className="space-y-2">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-            1. Opaska Wokół Domu ({bandResults.bandAreaNet} m²)
+        <div className="space-y-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center justify-between">
+            <span>1. Opaska Wokół Domu ({bandResults.bandAreaNet} m²)</span>
+            <span className="text-slate-900 font-bold">{Math.round(totalBandCost).toLocaleString('pl-PL')} PLN</span>
           </h3>
 
-          <table className="w-full text-left text-xs border-collapse text-slate-700">
-            <thead>
-              <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
-                <th className="py-2 px-3">Pozycja / Materiał</th>
-                <th className="py-2 px-3">Ilość z zapasem</th>
-                <th className="py-2 px-3 text-right">Wartość (PLN)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              <tr>
-                <td className="py-2 px-3">Obrzeża trawnikowe ({bandParams.edgingLength}x{bandParams.edgingHeight}x{bandParams.edgingThickness} cm)</td>
-                <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.edgingPiecesCount} szt.</td>
-                <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costEdging)} PLN</td>
-              </tr>
-              {bandParams.surfaceType === 'plyty' && (
-                <tr>
-                  <td className="py-2 px-3">Płyty betonowe / tarasowe ({bandParams.tileLength}x{bandParams.tileWidth} cm)</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.tilesCount} szt.</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costBandSurface)} PLN</td>
-                </tr>
-              )}
-              {bandParams.surfaceType === 'kostka' && (
-                <tr>
-                  <td className="py-2 px-3">Kostka brukowa / granitowa</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.pavingArea} m²</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costBandSurface)} PLN</td>
-                </tr>
-              )}
-              <tr>
-                <td className="py-2 px-3">Tłuczeń łamany 0-31.5 mm (podbudowa)</td>
-                <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.subBaseWeightTons} ton</td>
-                <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costBandSubBase)} PLN</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          {/* MOBILE CARDS VIEW */}
+          <div className="grid grid-cols-1 gap-2 md:hidden print:hidden">
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex justify-between items-center text-xs">
+              <div>
+                <div className="font-semibold text-slate-800">Obrzeża trawnikowe</div>
+                <div className="text-[11px] text-slate-500">{bandParams.edgingLength}x{bandParams.edgingHeight}x{bandParams.edgingThickness} cm</div>
+              </div>
+              <div className="text-right">
+                <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{bandResults.edgingPiecesCount} szt.</span>
+                <div className="font-bold text-slate-900">{Math.round(costEdging)} PLN</div>
+              </div>
+            </div>
 
-        {/* SECTION 2: PODJAZD */}
-        {drivewayResults && drivewayParams && (
-          <div className="space-y-2 pt-3 border-t border-slate-100">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-blue-600">
-              2. Podjazd do Garażu ({drivewayResults.areaNet} m²)
-            </h3>
-            <table className="w-full text-left text-xs border-collapse text-slate-700">
+            {bandParams.surfaceType === 'plyty' && (
+              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Płyty betonowe / tarasowe</div>
+                  <div className="text-[11px] text-slate-500">{bandParams.tileLength}x{bandParams.tileWidth} cm</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{bandResults.tilesCount} szt.</span>
+                  <div className="font-bold text-slate-900">{Math.round(costBandSurface)} PLN</div>
+                </div>
+              </div>
+            )}
+
+            {bandParams.surfaceType === 'kostka' && (
+              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Kostka brukowa / granitowa</div>
+                  <div className="text-[11px] text-slate-500">Nawierzchnia opaski</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{bandResults.pavingArea} m²</span>
+                  <div className="font-bold text-slate-900">{Math.round(costBandSurface)} PLN</div>
+                </div>
+              </div>
+            )}
+
+            <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex justify-between items-center text-xs">
+              <div>
+                <div className="font-semibold text-slate-800">Tłuczeń łamany 0-31.5 mm</div>
+                <div className="text-[11px] text-slate-500">Podbudowa opaski</div>
+              </div>
+              <div className="text-right">
+                <span className="inline-block bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{bandResults.subBaseWeightTons} t</span>
+                <div className="font-bold text-slate-900">{Math.round(costBandSubBase)} PLN</div>
+              </div>
+            </div>
+          </div>
+
+          {/* DESKTOP TABLE VIEW (SCROLLABLE ON MEDIUM SCREENS) */}
+          <div className="hidden md:block print:block overflow-x-auto rounded-xl border border-slate-200/60">
+            <table className="w-full text-left text-xs border-collapse text-slate-700 min-w-[480px]">
               <thead>
                 <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
-                  <th className="py-2 px-3">Pozycja / Materiał</th>
-                  <th className="py-2 px-3">Ilość z zapasem</th>
-                  <th className="py-2 px-3 text-right">Wartość (PLN)</th>
+                  <th className="py-2.5 px-3">Pozycja / Materiał</th>
+                  <th className="py-2.5 px-3">Ilość z zapasem</th>
+                  <th className="py-2.5 px-3 text-right">Wartość (PLN)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 <tr>
-                  <td className="py-2 px-3">Kostka brukowa / nawierzchnia podjazdu ({drivewayParams.surfaceType})</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{drivewayResults.areaGross} m²</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costDrivewaySurface)} PLN</td>
+                  <td className="py-2 px-3">Obrzeża trawnikowe ({bandParams.edgingLength}x{bandParams.edgingHeight}x{bandParams.edgingThickness} cm)</td>
+                  <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.edgingPiecesCount} szt.</td>
+                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costEdging)} PLN</td>
                 </tr>
+                {bandParams.surfaceType === 'plyty' && (
+                  <tr>
+                    <td className="py-2 px-3">Płyty betonowe / tarasowe ({bandParams.tileLength}x{bandParams.tileWidth} cm)</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.tilesCount} szt.</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costBandSurface)} PLN</td>
+                  </tr>
+                )}
+                {bandParams.surfaceType === 'kostka' && (
+                  <tr>
+                    <td className="py-2 px-3">Kostka brukowa / granitowa</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.pavingArea} m²</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costBandSurface)} PLN</td>
+                  </tr>
+                )}
                 <tr>
-                  <td className="py-2 px-3">Tłuczeń podbudowy (gr. {drivewayParams.subBaseThickness} cm)</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{drivewayResults.subBaseWeightTons} ton ({drivewayResults.subBaseVolumeLoose} m³)</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costDrivewaySubbase)} PLN</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-3">Krawężniki drogowe ({drivewayResults.edgingLength} m)</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{drivewayResults.edgingPiecesCount} szt.</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costDrivewayEdging)} PLN</td>
+                  <td className="py-2 px-3">Tłuczeń łamany 0-31.5 mm (podbudowa)</td>
+                  <td className="py-2 px-3 font-semibold text-slate-900">{bandResults.subBaseWeightTons} ton</td>
+                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costBandSubBase)} PLN</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* SECTION 2: PODJAZD */}
+        {drivewayResults && drivewayParams && (
+          <div className="space-y-3 pt-3 border-t border-slate-100">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-blue-600 flex items-center justify-between">
+              <span>2. Podjazd do Garażu ({drivewayResults.areaNet} m²)</span>
+              <span className="font-bold text-slate-900">{Math.round(totalDrivewayCost).toLocaleString('pl-PL')} PLN</span>
+            </h3>
+
+            {/* MOBILE CARDS VIEW */}
+            <div className="grid grid-cols-1 gap-2 md:hidden print:hidden">
+              <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Nawierzchnia podjazdu</div>
+                  <div className="text-[11px] text-slate-500">{drivewayParams.surfaceType}</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{drivewayResults.areaGross} m²</span>
+                  <div className="font-bold text-slate-900">{Math.round(costDrivewaySurface)} PLN</div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Tłuczeń podbudowy</div>
+                  <div className="text-[11px] text-slate-500">Grubość {drivewayParams.subBaseThickness} cm</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{drivewayResults.subBaseWeightTons} t</span>
+                  <div className="font-bold text-slate-900">{Math.round(costDrivewaySubbase)} PLN</div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Krawężniki drogowe</div>
+                  <div className="text-[11px] text-slate-500">Długość {drivewayResults.edgingLength} m</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{drivewayResults.edgingPiecesCount} szt.</span>
+                  <div className="font-bold text-slate-900">{Math.round(costDrivewayEdging)} PLN</div>
+                </div>
+              </div>
+            </div>
+
+            {/* DESKTOP TABLE VIEW */}
+            <div className="hidden md:block print:block overflow-x-auto rounded-xl border border-slate-200/60">
+              <table className="w-full text-left text-xs border-collapse text-slate-700 min-w-[480px]">
+                <thead>
+                  <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
+                    <th className="py-2.5 px-3">Pozycja / Materiał</th>
+                    <th className="py-2.5 px-3">Ilość z zapasem</th>
+                    <th className="py-2.5 px-3 text-right">Wartość (PLN)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  <tr>
+                    <td className="py-2 px-3">Kostka brukowa / nawierzchnia podjazdu ({drivewayParams.surfaceType})</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{drivewayResults.areaGross} m²</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costDrivewaySurface)} PLN</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3">Tłuczeń podbudowy (gr. {drivewayParams.subBaseThickness} cm)</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{drivewayResults.subBaseWeightTons} ton ({drivewayResults.subBaseVolumeLoose} m³)</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costDrivewaySubbase)} PLN</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3">Krawężniki drogowe ({drivewayResults.edgingLength} m)</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{drivewayResults.edgingPiecesCount} szt.</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costDrivewayEdging)} PLN</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
         {/* SECTION 3: PARKING */}
         {parkingResults && parkingParams && (
-          <div className="space-y-2 pt-3 border-t border-slate-100">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-600">
-              3. Miejsca Parkingowe ({parkingParams.spacesCount} szt. - {parkingResults.totalAreaNet} m²)
+          <div className="space-y-3 pt-3 border-t border-slate-100">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-600 flex items-center justify-between">
+              <span>3. Miejsca Parkingowe ({parkingParams.spacesCount} szt. - {parkingResults.totalAreaNet} m²)</span>
+              <span className="font-bold text-slate-900">{Math.round(totalParkingCost).toLocaleString('pl-PL')} PLN</span>
             </h3>
-            <table className="w-full text-left text-xs border-collapse text-slate-700">
-              <thead>
-                <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
-                  <th className="py-2 px-3">Pozycja / Materiał</th>
-                  <th className="py-2 px-3">Ilość z zapasem</th>
-                  <th className="py-2 px-3 text-right">Wartość (PLN)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                <tr>
-                  <td className="py-2 px-3">Płyty ażurowe / Geokrata ({parkingParams.surfaceType})</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{parkingResults.totalAreaGross} m²</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costParkingSurface)} PLN</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-3">Tłuczeń podbudowy parkingowej (gr. {parkingParams.subBaseThickness} cm)</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{parkingResults.subBaseWeightTons} ton</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costParkingSubbase)} PLN</td>
-                </tr>
-              </tbody>
-            </table>
+
+            {/* MOBILE CARDS VIEW */}
+            <div className="grid grid-cols-1 gap-2 md:hidden print:hidden">
+              <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Płyty ażurowe / Geokrata</div>
+                  <div className="text-[11px] text-slate-500">{parkingParams.surfaceType}</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{parkingResults.totalAreaGross} m²</span>
+                  <div className="font-bold text-slate-900">{Math.round(costParkingSurface)} PLN</div>
+                </div>
+              </div>
+
+              <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Tłuczeń podbudowy parkingowej</div>
+                  <div className="text-[11px] text-slate-500">Grubość {parkingParams.subBaseThickness} cm</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{parkingResults.subBaseWeightTons} t</span>
+                  <div className="font-bold text-slate-900">{Math.round(costParkingSubbase)} PLN</div>
+                </div>
+              </div>
+            </div>
+
+            {/* DESKTOP TABLE VIEW */}
+            <div className="hidden md:block print:block overflow-x-auto rounded-xl border border-slate-200/60">
+              <table className="w-full text-left text-xs border-collapse text-slate-700 min-w-[480px]">
+                <thead>
+                  <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
+                    <th className="py-2.5 px-3">Pozycja / Materiał</th>
+                    <th className="py-2.5 px-3">Ilość z zapasem</th>
+                    <th className="py-2.5 px-3 text-right">Wartość (PLN)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  <tr>
+                    <td className="py-2 px-3">Płyty ażurowe / Geokrata ({parkingParams.surfaceType})</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{parkingResults.totalAreaGross} m²</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costParkingSurface)} PLN</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3">Tłuczeń podbudowy parkingowej (gr. {parkingParams.subBaseThickness} cm)</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{parkingResults.subBaseWeightTons} ton</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costParkingSubbase)} PLN</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
         {/* SECTION 4: OGRODZENIE */}
         {fenceResults && fenceParams && (
-          <div className="space-y-2 pt-3 border-t border-slate-100">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-purple-600">
-              4. Ogrodzenie Posesji ({fenceResults.netFenceLength} m)
+          <div className="space-y-3 pt-3 border-t border-slate-100">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-purple-600 flex items-center justify-between">
+              <span>4. Ogrodzenie Posesji ({fenceResults.netFenceLength} m)</span>
+              <span className="font-bold text-slate-900">{Math.round(totalFenceCost).toLocaleString('pl-PL')} PLN</span>
             </h3>
-            <table className="w-full text-left text-xs border-collapse text-slate-700">
-              <thead>
-                <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
-                  <th className="py-2 px-3">Pozycja / Materiał</th>
-                  <th className="py-2 px-3">Ilość</th>
-                  <th className="py-2 px-3 text-right">Wartość (PLN)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                <tr>
-                  <td className="py-2 px-3">Panele ogrodzeniowe ({fenceParams.fenceType}, wys. {fenceParams.fenceHeight}cm)</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{fenceResults.spansCount} szt.</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costFencePanels)} PLN</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-3">Słupki ogrodzeniowe (60x40 mm)</td>
-                  <td className="py-2 px-3 font-semibold text-slate-900">{fenceResults.postsCountTotal} szt.</td>
-                  <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costFencePosts)} PLN</td>
-                </tr>
-                {fenceParams.useConcreteBoard && (
-                  <tr>
-                    <td className="py-2 px-3">Deski podmurówki prefabrykowanej (2.5m x {fenceParams.concreteBoardHeight}cm)</td>
-                    <td className="py-2 px-3 font-semibold text-slate-900">{fenceResults.concreteBoardsCount} szt.</td>
-                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costFenceConcreteBoards)} PLN</td>
+
+            {/* MOBILE CARDS VIEW */}
+            <div className="grid grid-cols-1 gap-2 md:hidden print:hidden">
+              <div className="bg-purple-50/50 border border-purple-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Panele ogrodzeniowe</div>
+                  <div className="text-[11px] text-slate-500">{fenceParams.fenceType}, wys. {fenceParams.fenceHeight}cm</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{fenceResults.spansCount} szt.</span>
+                  <div className="font-bold text-slate-900">{Math.round(costFencePanels)} PLN</div>
+                </div>
+              </div>
+
+              <div className="bg-purple-50/50 border border-purple-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                  <div className="font-semibold text-slate-800">Słupki ogrodzeniowe</div>
+                  <div className="text-[11px] text-slate-500">Profil 60x40 mm</div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-block bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{fenceResults.postsCountTotal} szt.</span>
+                  <div className="font-bold text-slate-900">{Math.round(costFencePosts)} PLN</div>
+                </div>
+              </div>
+
+              {fenceParams.useConcreteBoard && (
+                <div className="bg-purple-50/50 border border-purple-100 rounded-xl p-3 flex justify-between items-center text-xs">
+                  <div>
+                    <div className="font-semibold text-slate-800">Deski podmurówki</div>
+                    <div className="text-[11px] text-slate-500">2.5m x {fenceParams.concreteBoardHeight}cm</div>
+                  </div>
+                  <div className="text-right">
+                    <span className="inline-block bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded text-[11px] mb-1">{fenceResults.concreteBoardsCount} szt.</span>
+                    <div className="font-bold text-slate-900">{Math.round(costFenceConcreteBoards)} PLN</div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* DESKTOP TABLE VIEW */}
+            <div className="hidden md:block print:block overflow-x-auto rounded-xl border border-slate-200/60">
+              <table className="w-full text-left text-xs border-collapse text-slate-700 min-w-[480px]">
+                <thead>
+                  <tr className="border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold tracking-wider bg-slate-50">
+                    <th className="py-2.5 px-3">Pozycja / Materiał</th>
+                    <th className="py-2.5 px-3">Ilość</th>
+                    <th className="py-2.5 px-3 text-right">Wartość (PLN)</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  <tr>
+                    <td className="py-2 px-3">Panele ogrodzeniowe ({fenceParams.fenceType}, wys. {fenceParams.fenceHeight}cm)</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{fenceResults.spansCount} szt.</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costFencePanels)} PLN</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3">Słupki ogrodzeniowe (60x40 mm)</td>
+                    <td className="py-2 px-3 font-semibold text-slate-900">{fenceResults.postsCountTotal} szt.</td>
+                    <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costFencePosts)} PLN</td>
+                  </tr>
+                  {fenceParams.useConcreteBoard && (
+                    <tr>
+                      <td className="py-2 px-3">Deski podmurówki prefabrykowanej (2.5m x {fenceParams.concreteBoardHeight}cm)</td>
+                      <td className="py-2 px-3 font-semibold text-slate-900">{fenceResults.concreteBoardsCount} szt.</td>
+                      <td className="py-2 px-3 text-right font-bold text-slate-900">{Math.round(costFenceConcreteBoards)} PLN</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
